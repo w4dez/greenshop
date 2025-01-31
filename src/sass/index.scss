@@ -1,2 +1,10 @@
-@import './common';
-@import './utils/colors', './utils/general', './utils/mixin';
+@use './common';
+@use './utils/colors';
+@use './utils/general';
+@use './utils/mixin';
+@use './sections/cards';
+@use './sections/popularCard';
+@use './sections/discountCard';
+
+
+

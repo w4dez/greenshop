@@ -1,21 +1,34 @@
 html {
   scroll-behavior: smooth;
+  
+}
+
+
+body {
+  background-color: #e8e8e2;
 }
 .container {
   margin: 0 auto;
   @media (min-width: 320px) {
-    padding: 0 15px;
-    width: 100%;
+    // padding: 0 15px;
+    // width: 100%;
+    width: 290px;
   }
   @media (min-width: 375px) {
+    width: 375px;
+    // padding: 0;
     padding: 0 20px;
   }
   @media (min-width: 768px) {
-    width: 704px;
-    padding: 0 32px;
+    padding: 0;
+    width: 703px;
+  }
+  @media (min-width:1280px){
+    width: 936px;
   }
   @media (min-width: 1600px) {
     width: 1240px;
+    padding: 0;
   }
 }
 
@@ -34,8 +47,16 @@ a {
   text-decoration: none;
 }
 body {
-  font-family: Montserrat;
+  font-family: "Inter", sans-serif;
   font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 * {
