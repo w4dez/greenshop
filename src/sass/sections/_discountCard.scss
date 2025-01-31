@@ -1,0 +1,128 @@
+.cards__discount {
+    &__list {
+        margin: 0;
+        display: flex;
+        // flex-wrap: wrap;
+        gap: 20px;
+        @media (min-width:320px) {
+            flex-direction: column;
+
+        }
+        @media (min-width:768px) {
+            flex-direction: row;
+            
+        }
+        @media (min-width:1600px) {
+            flex-direction: column;
+
+        }
+    }
+    box-sizing: border-box;
+
+
+    // &__block {
+    //     display: flex;
+    //     gap: 30px;
+    // }
+
+    &__item {
+        position: relative;
+        border-radius: 20px;
+        // margin-bottom: 15px;
+
+        padding: 15px;
+        height: 235px;
+
+        background-color: #fafafa;
+        @media (min-width:320px) {
+            width: 290px;
+            
+        }
+
+        @media (min-width:375px) {
+            width: 335px;
+            
+        }
+        @media (min-width:1600px) {
+            width: 275px;
+        }
+
+        &__img {
+            height: 114px;
+            width: 114px;
+        }
+
+        &__wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            margin-top: 20px;
+        }
+
+        &__imgWrapper {
+            border-radius: 10px;
+            height: 150px;
+            background-color: #e8e8e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media (min-width:375px) {
+                width: 303px;
+                
+            }
+            @media (min-width:1600px) {
+                width: 243px;
+
+            }
+        }
+
+        &__title{
+            // font-family: 'Inter Regular';
+            // margin-top: 20px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 130%;
+            color: #010101;
+        }
+
+        
+        &__price {
+            font-weight: 500;
+            font-size: 19px;
+            line-height: 123%;
+            color: #010101;
+        }
+
+        &__basket {
+            height: 34px;
+            width: 34px;
+            border-radius: 17px;
+            border: none;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+
+            background: #586f1f;
+
+        }
+
+        &__priceWrapper{
+
+            display: flex;
+            gap: 2px;
+
+            align-items:center;
+        }
+
+
+
+    }
+    &__discountImg{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+
+
+}
