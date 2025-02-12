@@ -1,0 +1,129 @@
+.intro {
+  &__box {
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1280px) {
+      width: 1000px;
+      height: 598px;
+    }
+    @media (max-width: 768px) {
+      width: 768px;
+      height: 913px;
+    }
+
+    @media (max-width: 375px) {
+      width: 375px;
+      height: 752px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 111%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #010101;
+    white-space: nowrap;
+    @media (max-width: 1280px) {
+      width: 700px;
+      white-space: normal;
+    }
+    @media (max-width: 768px) {
+      width: 650px;
+      white-space: normal;
+    }
+    @media (max-width: 375px) {
+      font-size: 39px;
+      width: 335px;
+      white-space: normal;
+    }
+  }
+
+  &__highlight {
+    color: #6d8434;
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 151%;
+    text-align: center;
+    color: rgba(1, 1, 1, 0.8);
+    @media (max-width: 375px) {
+      font-size: 12px;
+      height: 55px;
+      width: 200px;
+    }
+  }
+  &__baner {
+    margin-top: 35px;
+  }
+  &__img {
+    object-fit: cover;
+    border-radius: 60px;
+    border: 1px solid #000;
+    width: 1240px;
+    height: 350px;
+    @media (max-width: 1600px) {
+      width: 936px;
+      height: 264px;
+    }
+    @media (max-width: 1280px) {
+      width: 936px;
+      height: 264px;
+    }
+    @media (max-width: 768px) {
+      width: 704px;
+      height: 580px;
+    }
+    @media (max-width: 375px) {
+      width: 335px;
+      height: 480px;
+    }
+  }
+  &__spinnerbox {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 130px;
+    left: 1120px;
+    @media (max-width: 1600px) {
+      top: 150px;
+      left: 825px;
+    }
+    @media (max-width: 1280px) {
+      top: 265px;
+      left: 850px;
+    }
+
+    @media (max-width: 768px) {
+      top: 275px;
+      left: 635px;
+    }
+    @media (max-width: 375px) {
+      top: 220px;
+      left: 250px;
+    }
+  }
+
+  &__spinner {
+    animation: spin 5s linear 0s infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
