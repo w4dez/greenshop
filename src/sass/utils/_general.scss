@@ -1,8 +1,6 @@
 html {
   scroll-behavior: smooth;
-  
 }
-
 
 body {
   background-color: #e8e8e2;
@@ -23,7 +21,7 @@ body {
     padding: 0;
     width: 703px;
   }
-  @media (min-width:1280px){
+  @media (min-width: 1280px) {
     width: 936px;
   }
   @media (min-width: 1600px) {
@@ -47,11 +45,16 @@ a {
   text-decoration: none;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
