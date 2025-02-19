@@ -1,9 +1,11 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+  background-color: #E8E8E2;
+}
 .container {
   margin: 0 auto;
-  background-color: #E8E8E2;
 
   @media (min-width: 320px) {
     padding: 0 15px;
@@ -13,7 +15,7 @@ html {
     padding: 0 20px;
   }
   @media (min-width: 768px) {
-    width: 704px; 
+    // width: 704px; 
     padding: 0 32px; 
   }
   @media (min-width: 1600px) {

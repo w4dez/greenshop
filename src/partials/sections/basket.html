@@ -1,11 +1,52 @@
 <div class="products">
-    <div class="container">
-        <div class="counter_wrapper"> 
-            <img class="cart_img" src="./images/cart-green.svg" alt="cart">
-            <p class="cart-p">CART<span class="cart_count basket_span">(0)</span></p>
-        </div>
-        <div class="basket_products">
-            <div class="delete-all">Delete all <i class="fa-solid fa-circle-xmark"></i>
-                  </div>
+  <div class="container">
+    <div class="counter_wrapper_p">
+      <img class="cart_img" src="./images/cart-green.svg" alt="cart" />
+      <p class="cart-p">CART<span class="cart_count basket_span">(0)</span></p>
     </div>
+    <div class="basket_products">
+      <div class="delete-all">
+        Delete all
+        <button class="delete_all-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul class="products_list">
+        <!-- {{each}} -->
+        <li class="product_item">
+        
+         <div class="product_img-wrapper"> <img
+            class="product_img"
+            src="https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e383b.png"
+            alt="#"
+          /></div>
+          <div class="product_info">
+            <button class="delete_btn">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="product_title">Title</h3>
+            <p class="product_information">
+              Category: <span>category</span> Size: <span>Size</span>
+            </p>
+       <div class="p_price-wrapper">
+        <p class="product_price"><b>Price</b></p>
+        <div class="product_counter">
+          <button class="counter_btn minus">-</button>
+          <span class="quantity">1</span>
+          <button class="counter_btn plus">+</button>
+      </div>
+       </div>
+        
+      
+        </div>
+        </li>
+        <!-- {{#each}} -->
+      </ul>
+    </div>
+    <div class="sum_section">
+      <h2 class="sum_title"><b>YOUR ORDER</b></h2>
+      <input class="sum_input" palce></input> 
+      
+    </div>
+  </div>
 </div>
