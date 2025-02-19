@@ -24,18 +24,18 @@ const addCardFn = async(e) => {
     }
 
     if (btn) {
-        // const response = await fetch(URL+idElement)
-        // const card = await response.json()
+
         console.log(typeof cardsBasket)
         cardsBasket.push(idElement)
         localStorage.setItem('productsId', JSON.stringify(cardsBasket))
+        btn.innerHTML = '<i class="fa-solid fa-check" style="color:#fff"></i>'
 
 
-        console.log('btndfffdfdfdfd');
+
         
 
     }
-    console.log('btnntntntntn');
+
     
     console.log(idElement);
 
@@ -88,20 +88,27 @@ const addCardFnModal = async(e) => {
 
 
 
+const renderFn = (e, check) => {
+    const btn = e.target.closest("button")
+
+
+    if (btn.classList.contains('addToCard')) {
+        addCardFnModal(e)
+
+        btn.innerHTML = check
+    }
+}
+
+
+
+
 backdrop.addEventListener('click', (e) => {
 
-    // console.log(e.target);
-    
-
-    const btnModal = e.target.closest("button")
 
 
-    if (btnModal.classList.contains('addToCard')) {
-        addCardFnModal(e)
-        console.log('btn');
 
-        
-    }
+    renderFn(e, '<i class="fa-solid fa-check"></i>')
+
 
 })
 
@@ -110,30 +117,14 @@ backdrop.addEventListener('click', (e) => {
 discountList.addEventListener('click', (e) => {
 
 
-    const btn = e.target.closest("button")
-
-
-    if (btn.classList.contains('addToCard')) {
-        addCardFnModal(e)
-        console.log('btn');
-
-        
-    }
+    renderFn(e, '<i class="fa-solid fa-check" style="color:#fff"></i>')
 
 })
 
 popularList.addEventListener('click', (e) => {
 
+    renderFn(e, '<i class="fa-solid fa-check" style="color:#586f1f; width: 4px; height:5px; margin: 0 10px 10px 0"></i>')
 
-    const btn = e.target.closest("button")
-
-
-    if (btn.classList.contains('addToCard')) {
-        addCardFnModal(e)
-        console.log('btn');
-
-        
-    }
 
 })
 
