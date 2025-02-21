@@ -11,12 +11,14 @@
         margin-bottom: 103px;
     }
     .counter_wrapper_p{
+        margin-top: 50px;
         display: flex;
         align-items: center;
         gap: 17px;
         margin-bottom: 30px;
     }
     .cart-p{
+       
         color: #010101;
         font-family: Inter;
     font-size: 21.94px;
@@ -96,6 +98,9 @@
     }
 
     .products > .container{
+        @media(min-width:768px){
+            width: 650px;
+        }
         @media(min-width: 1200px){
             width:1000px
         }
@@ -113,6 +118,7 @@
         font-weight: 400;
         font-size: 11.25px;
         line-height: 13.92px;
+        margin-bottom: 15px;
         // letter-spacing: 0%;
     color: #0101014D;
 
@@ -132,8 +138,8 @@
     font-weight: 500;
     font-size: 16.59px;
     line-height: 20px;
-    letter-spacing: 0%;
     color: #010101; 
+    margin-bottom:17px ;
 
     }
     .product_img-wrapper{
@@ -187,4 +193,49 @@
     position:absolute;
     bottom:0%;
     margin-bottom:25px
+   }
+   .sum_info{
+    text-align: center;
+    background-color: #0101010d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top:50px ;
+    width: 300px;
+    padding:15px ;
+    border-radius: 10px;
+   }
+   .sum_input{
+    background-color: #E8E8E2;
+    border-radius: 30px;
+    border: #0101014d, solid, 1px;
+    width: 300px;
+    padding: 10px;
+
+   }
+   .sum_input > placeholder{
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12.8px;
+    line-height: 17.92px;
+    letter-spacing: 0%;
+    color: #010101;
+   }
+   .checkout{
+    width:300px;
+    background-color: #6D8434;
+    border-radius: 30px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12.8px;
+    line-height: 17.92px;
+    letter-spacing: 0%;
+    color: #fff;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
    }

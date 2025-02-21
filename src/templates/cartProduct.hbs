@@ -1,0 +1,24 @@
+<li data-id="{{id}}" data-count="{{count}}" class='product_item'>
+  <div class='product_img-wrapper'>
+    <img class='product_img' src='{{img}}' alt='product' /></div>
+  <div class='product_info'>
+    <button class='delete_btn'>
+      <i class='fa-solid fa-xmark'></i>
+    </button>
+    <h3 class='product_title'>{{name}}</h3>
+    <p class='product_information'>
+      Category:
+      <span>{{category}}</span>
+      Size:
+      <span>{{size}}</span>
+    </p>
+    <div class='p_price-wrapper'>
+      <p class='product_price'><b>{{price}}</b></p>
+      <div class='product_counter'>
+        <button class='counter_btn minus'>-</button>
+        <span class='quantity'>1</span>
+        <button class='counter_btn plus'>+</button>
+      </div>
+    </div>
+  </div>
+</li>

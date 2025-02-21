@@ -1,4 +1,6 @@
-@use './common', "./header","./cart";
+@use './common'; 
+@use"./header"; 
+@use"./cart";
 @use './utils/colors';
 @use './utils/general';
 @use './utils/mixin';
