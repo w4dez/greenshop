@@ -1,7 +1,10 @@
 import ProductsTemplate from "../templates/cartProduct.hbs";
 import EmptyBasket from "../templates/empty-basket.hbs"
 import Basket from "../templates/basket.hbs"
+import imgEmpty from "../images/basket-img.png"
+import greenCard from "../images/cart-green.svg"
 const list = document.querySelector(".products_list")
+const productContent = document.querySelector(".product__content")
 const showSum = document.querySelector(".summary")
 const deleteAllBtn = document.querySelector(".delete_all-btn")
 const cartCount = document.querySelector(".cart_count")
@@ -13,6 +16,7 @@ console.log(productsId);
 const renderProducts = () => {
     if (productsId.length === 0) {
         list.innerHTML = ""
+
         return
     }
     productsId.forEach(async (id) => {
@@ -38,7 +42,6 @@ const renderProducts = () => {
 
     });
 }
-renderProducts()
 list.addEventListener("click", (e) => {
     console.log('click', e.target);
     const liItem = e.target.closest("li")
@@ -50,19 +53,26 @@ list.addEventListener("click", (e) => {
         productsId.splice(productsId.indexOf(id), 1)
         localStorage.setItem("productsId", JSON.stringify(productsId))
 
-       liItem.remove()
-       const price = liItem.querySelector(".product_price").textContent
+        liItem.remove()
+        const price = liItem.querySelector(".product_price").textContent
         sum -= +price
         productCount -= 1
         showSum.textContent = `$${sum.toFixed(2)}`
         cartCount.textContent = `(${productCount})`
-   
+
 
     }
+    let quantity = +e.target.closest(".quantity")
+
     if (e.target.classList.contains('plus')) {
+        let count = +e.target.closest("li").dataset.count
         e.target.parentElement.dataset.count = +e.target.parentElement.dataset.count + 1
-        const price = e.target.parentElement.prevElementSibling
-        
+        const price = e.target.closest("li").querySelector(".product_price").textContent
+
+        count++
+        console.log(count);
+
+        quantity.textContent = count
         sum = + +price * +e.target.parentElement.dataset.count
     }
     if (e.target.classList.contains('minus')) {
@@ -80,27 +90,40 @@ deleteAllBtn.addEventListener("click", () => {
     sum = 0
     productCount = 0
     cartCount.textContent = (`${productCount}`)
-
-})
-
-const quantity = document.querySelector(".quantity")
-const minus = document.querySelector(".minus")
-const plus = document.querySelector(".plus")
-
-plus.addEventListener("click", (e)=>{
-    +quantity++
-})
-minus.addEventListener("click", (e)=>{
-    quantity--
-    if (+quantity < 0){
-        alert("The quantity is less than 0")
+    if (productsId.length === 0) {
+        productContent.innerHTML = EmptyBasket()
+    }
+    else {
+        renderProducts()
     }
 })
 
+// const quantity = document.querySelector(".quantity")
+// const minus = document.querySelector(".minus")
+// const plus = document.querySelector(".plus")
 
-if(productsId.length === 0){
-    document.innerHTML = EmptyBasket()
+// plus.addEventListener("click", (e)=>{
+//     +quantity++
+// })
+// minus.addEventListener("click", (e)=>{
+//     quantity--
+//     if (+quantity < 0){
+//         alert("The quantity is less than 0")
+//     }
+// })
+
+
+if (productsId.length === 0) {
+    const params = {
+        img: imgEmpty,
+        greenCard: greenCard
+    }
+    productContent.innerHTML = EmptyBasket(params)
 }
-else{
-    document.innerHTML = Basket()
+else {
+
+
+    // productContent.innerHTML = Basket()
+    renderProducts()
+
 }
