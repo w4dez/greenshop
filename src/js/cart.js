@@ -1,6 +1,7 @@
 import ProductsTemplate from "../templates/cartProduct.hbs";
 import EmptyBasket from "../templates/empty-basket.hbs"
 import Basket from "../templates/basket.hbs"
+// import { getCards } from "./cards"
 import imgEmpty from "../images/basket-img.png"
 import greenCard from "../images/cart-green.svg"
 const list = document.querySelector(".products_list")
@@ -12,7 +13,19 @@ let sum = 0
 let productCount = 0
 
 const productsId = JSON.parse(localStorage.getItem("productsId")) || []
+
 console.log(productsId);
+
+const sumOfProducts =  () => {
+    let sumOfProducts = 0
+    const products = productsId.forEach(async(item) => {
+        const res = await fetch(`https://food-boutique.b.goit.study/api/products/${item}`)
+        const product = await res.json()
+        sumOfProducts += product.price
+    })
+    return sumOfProducts
+}
+
 const renderProducts = () => {
     if (productsId.length === 0) {
         list.innerHTML = ""
@@ -23,12 +36,15 @@ const renderProducts = () => {
         const res = await fetch(`https://food-boutique.b.goit.study/api/products/${id}`)
         const product = await res.json()
         console.log(product);
+       
+
         const params = {
             id: product._id,
             img: product.img,
             title: product.name,
             price: product.price,
             count: 1,
+           
         }
 
         list.insertAdjacentHTML("afterbegin", ProductsTemplate(params))
@@ -60,20 +76,26 @@ list.addEventListener("click", (e) => {
         showSum.textContent = `$${sum.toFixed(2)}`
         cartCount.textContent = `(${productCount})`
 
-
     }
-    let quantity = +e.target.closest(".quantity")
+
+
+    let sumOfProducts = 0
 
     if (e.target.classList.contains('plus')) {
-        let count = +e.target.closest("li").dataset.count
-        e.target.parentElement.dataset.count = +e.target.parentElement.dataset.count + 1
-        const price = e.target.closest("li").querySelector(".product_price").textContent
+        const counter = e.target.closest(".product_counter")
+        let quantity = counter.querySelector(".quantity")
+        console.log(quantity);
+        let count = +quantity.textContent + 1
 
-        count++
-        console.log(count);
+        const price = e.target.closest("li").querySelector(".product_price")
+
+
 
         quantity.textContent = count
-        sum = + +price * +e.target.parentElement.dataset.count
+        sumOfProducts = + +price.textContent * count
+
+        console.log(sumOfProducts);
+
     }
     if (e.target.classList.contains('minus')) {
         e.target.parentElement.dataset.count = +e.target.parentElement.dataset.count - 1
@@ -86,7 +108,7 @@ list.addEventListener("click", (e) => {
 deleteAllBtn.addEventListener("click", () => {
     localStorage.removeItem("productsId")
     list.innerHTML = ""
-    showSum.textContent = $0
+    showSum.textContent = `$0`
     sum = 0
     productCount = 0
     cartCount.textContent = (`${productCount}`)
