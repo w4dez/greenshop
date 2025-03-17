@@ -89,18 +89,21 @@ list.addEventListener("click", (e) => {
 
         const price = e.target.closest("li").querySelector(".product_price")
 
-
-
         quantity.textContent = count
         sumOfProducts = + +price.textContent * count
-
+        showSum.textContent = (sumOfProducts + (sum - price.textContent)).toFixed(2)
         console.log(sumOfProducts);
 
     }
-    if (e.target.classList.contains('minus')) {
-        e.target.parentElement.dataset.count = +e.target.parentElement.dataset.count - 1
-        const price = e.target.parentElement.prevElementSibling
-        sum = + +price * +e.target.parentElement.dataset.count
+        if (e.target.classList.contains('minus')) {
+            const counter = e.target.closest(".product_counter")
+             quantity = counter.querySelector(".quantity")
+             
+            console.log(quantity);
+            count = +quantity.textContent - 1
+            const price = e.target.closest("li").querySelector(".product_price")
+            
+        showSum.textContent = (sumOfProducts - (sum + price.textContent)).toFixed(2)
     }
 })
 // const deleteAllBtn = document.querySelector(".delete_all-btn")
