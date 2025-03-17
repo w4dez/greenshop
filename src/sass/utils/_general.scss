@@ -6,27 +6,33 @@ body {
   background-color: #e8e8e2;
 }
 .container {
+  max-width: 375px;
+  min-width: 320px;
+  padding: 0 20px 0 20px;
   margin: 0 auto;
-  @media (min-width: 320px) {
-    // padding: 0 15px;
-    // width: 100%;
-    width: 290px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-right: 32px;
+    padding-left: 32px;
   }
-  @media (min-width: 375px) {
-    width: 375px;
-    // padding: 0;
-    padding: 0 20px;
+}
+
+@media (min-width: 1050px) {
+  .container {
+    max-width: 1000px;
+    padding-right: 32px;
+    padding-left: 32px;
   }
-  @media (min-width: 768px) {
-    padding: 0;
-    width: 703px;
-  }
-  @media (min-width: 1280px) {
-    width: 936px;
-  }
-  @media (min-width: 1600px) {
-    width: 1240px;
-    padding: 0;
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding-right: 100px;
+    padding-left: 100px;
   }
 }
 
@@ -69,4 +75,8 @@ p {
 .is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+button {
+  padding: 0;
+  border: none;
 }
