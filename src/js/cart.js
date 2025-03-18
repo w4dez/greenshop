@@ -26,6 +26,7 @@ const sumOfProducts =  () => {
     return sumOfProducts
 }
 
+
 const renderProducts = () => {
     if (productsId.length === 0) {
         list.innerHTML = ""
