@@ -1,0 +1,42 @@
+<section class="filter">
+  <div class="filter__container container">
+    <h2 class="filter__title">Filters:</h2>
+    <div class="filter__search_box">
+      <form class="filter__search_form">
+        <div class="filter__search_space">
+          <input
+            type="text"
+            class="filter__search_input"
+            placeholder="Search for anything"
+          />
+          <button type="submit" class="filter__search_button">
+            <img src="/src/icons/search-icon.svg" alt="search" />
+          </button>
+        </div>
+      </form>
+      <div class="filter__sort_box">
+        <select name="sort" class="filter__sort">
+          <option value="show-all">Show all</option>
+          <option value="beverages">Beverages</option>
+          <option value="bakary">Breads & Bakery</option>
+          <option value="dairy">Dairy</option>
+          <option value="deli">Deli</option>
+          <option value="eggs">Eggs</option>
+          <option value="fresh ">Fresh Produce</option>
+          <option value="frozen">Frozen Foods</option>
+        </select>
+      </div>
+      <div class="filter__filter_box">
+        <select name="categories" class="filter__catigories">
+          <option value="byABC_Asc">A to Z</option>
+          <option value="byABC_Desc">Z to A</option>
+          <option value="byPrice_Asc">Cheap</option>
+          <option value="byPrice_Desc">Expensive</option>
+          <option value="byPopularity_Asc">Not popular</option>
+          <option value="byPopularity_Desc">Popular</option>
+          <option value="showAll">Show all</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
