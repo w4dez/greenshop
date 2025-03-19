@@ -1,6 +1,6 @@
-@use './common'; 
-@use"./header"; 
-@use"./cart";
+@use './common';
+@use './header';
+@use './cart';
 @use './utils/colors';
 @use './utils/general';
 @use './utils/mixin';
@@ -8,6 +8,4 @@
 @use './sections/popularCard';
 @use './sections/discountCard';
 @use './sections/cardsModal';
-
-
-
+@use './sections/intro';
