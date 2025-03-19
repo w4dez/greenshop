@@ -1,3 +1,5 @@
+import { updateBasketSpans } from './cart.js';
+
 const list = document.getElementById('js-cardList')
 
 // let cardsBasket = localStorage.getItem('productsId') || []
@@ -29,6 +31,9 @@ const addCardFn = async(e) => {
         cardsBasket.push(idElement)
         localStorage.setItem('productsId', JSON.stringify(cardsBasket))
         btn.innerHTML = '<i class="fa-solid fa-check" style="color:#fff"></i>'
+        
+        // Update basket span with new count
+        updateBasketSpans(cardsBasket.length)
 
 
 
@@ -70,6 +75,9 @@ const addCardFnModal = async(e) => {
         
         
         localStorage.setItem('productsId', JSON.stringify(cardsBasket))
+        
+        // Update basket span with new count
+        updateBasketSpans(cardsBasket.length)
 
 
 
@@ -127,6 +135,12 @@ popularList.addEventListener('click', (e) => {
 
 
 })
+
+
+// Initialize basket span on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateBasketSpans(cardsBasket.length);
+});
 
 
 

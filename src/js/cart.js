@@ -10,15 +10,38 @@ const showSum = document.querySelector(".summary")
 const deleteAllBtn = document.querySelector(".delete_all-btn")
 const cartCount = document.querySelector(".cart_count")
 let sum = 0
-let productCount = 0
 
-const productsId = JSON.parse(localStorage.getItem("productsId")) || []
 
-console.log(productsId);
+const getProductsFromStorage = () => JSON.parse(localStorage.getItem("productsId")) || [];
 
-const sumOfProducts =  () => {
+const updateBasketSpans = () => {
+    const count = getProductsFromStorage().length;
+    
+    const basketSpans = document.querySelectorAll(".basket_span")
+    basketSpans.forEach(span => {
+        span.textContent = `(${count})`
+    })
+    
+    if (cartCount) {
+        cartCount.textContent = `(${count})`
+    }
+    
+    return count;
+}
+
+const initCartCount = () => {
+    updateBasketSpans();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCartCount();
+})
+
+const sumOfProducts = () => {
     let sumOfProducts = 0
-    const products = productsId.forEach(async(item) => {
+    const productsId = getProductsFromStorage();
+    
+    productsId.forEach(async (item) => {
         const res = await fetch(`https://food-boutique.b.goit.study/api/products/${item}`)
         const product = await res.json()
         sumOfProducts += product.price
@@ -26,130 +49,140 @@ const sumOfProducts =  () => {
     return sumOfProducts
 }
 
-
 const renderProducts = () => {
+    const productsId = getProductsFromStorage();
+    
     if (productsId.length === 0) {
-        list.innerHTML = ""
-
-        return
+        if (list) list.innerHTML = "";
+        return;
     }
+    
+    sum = 0;
+    
+    if (list) list.innerHTML = "";
+    
     productsId.forEach(async (id) => {
         const res = await fetch(`https://food-boutique.b.goit.study/api/products/${id}`)
         const product = await res.json()
-        console.log(product);
-       
-
+        
         const params = {
             id: product._id,
             img: product.img,
             title: product.name,
             price: product.price,
             count: 1,
-           
         }
 
-        list.insertAdjacentHTML("afterbegin", ProductsTemplate(params))
-        //   liItem.innerHTML = ProductsTemplate(params)
-        //   list.appendChild(liItem)
-        sum += product.price
-        productCount += 1
-        console.log(sum);
-        showSum.textContent = `$${sum.toFixed(2)}`
-        cartCount.textContent = `(${productCount})`
-
+        if (list) {
+            list.insertAdjacentHTML("afterbegin", ProductsTemplate(params))
+            sum += product.price
+            
+            if (showSum) {
+                showSum.textContent = `$${sum.toFixed(2)}`
+            }
+        }
     });
+    
+    updateBasketSpans();
 }
-list.addEventListener("click", (e) => {
-    console.log('click', e.target);
-    const liItem = e.target.closest("li")
 
-    const deleteBtn = e.target.closest('.delete_btn')
-    if (deleteBtn) {
-        console.log('click delete');
-        const id = e.target.parentElement.dataset.id
-        productsId.splice(productsId.indexOf(id), 1)
-        localStorage.setItem("productsId", JSON.stringify(productsId))
-
-        liItem.remove()
-        const price = liItem.querySelector(".product_price").textContent
-        sum -= +price
-        productCount -= 1
-        showSum.textContent = `$${sum.toFixed(2)}`
-        cartCount.textContent = `(${productCount})`
-
-    }
-
-
-    let sumOfProducts = 0
-
-    if (e.target.classList.contains('plus')) {
-        const counter = e.target.closest(".product_counter")
-        let quantity = counter.querySelector(".quantity")
-        console.log(quantity);
-        let count = +quantity.textContent + 1
-
-        const price = e.target.closest("li").querySelector(".product_price")
-
-        quantity.textContent = count
-        sumOfProducts = + +price.textContent * count
-        showSum.textContent = (sumOfProducts + (sum - price.textContent)).toFixed(2)
-        console.log(sumOfProducts);
-
-    }
+if (list) {
+    list.addEventListener("click", (e) => {
+        console.log('click', e.target);
+        const liItem = e.target.closest("li")
+    
+        const deleteBtn = e.target.closest('.delete_btn')
+        if (deleteBtn) {
+            console.log('click delete');
+            const id = e.target.parentElement.dataset.id
+            const productsId = getProductsFromStorage();
+            productsId.splice(productsId.indexOf(id), 1)
+            localStorage.setItem("productsId", JSON.stringify(productsId))
+    
+            liItem.remove()
+            const price = liItem.querySelector(".product_price").textContent
+            sum -= +price
+            
+            if (showSum) {
+                showSum.textContent = `$${sum.toFixed(2)}`
+            }
+            
+            updateBasketSpans();
+        }
+    
+        let sumOfProducts = 0;
+    
+        if (e.target.classList.contains('plus')) {
+            const counter = e.target.closest(".product_counter")
+            let quantity = counter.querySelector(".quantity")
+            console.log(quantity);
+            let count = +quantity.textContent + 1
+    
+            const price = e.target.closest("li").querySelector(".product_price")
+    
+            quantity.textContent = count
+            sumOfProducts = +price.textContent * count
+            if (showSum) {
+                showSum.textContent = (sumOfProducts + (sum - price.textContent)).toFixed(2)
+            }
+            console.log(sumOfProducts);
+        }
+        
         if (e.target.classList.contains('minus')) {
             const counter = e.target.closest(".product_counter")
-             quantity = counter.querySelector(".quantity")
-             
+            let quantity = counter.querySelector(".quantity")
+    
             console.log(quantity);
-            count = +quantity.textContent - 1
+            let count = +quantity.textContent - 1
+            // Prevent the counter from going below 1
+            if (count < 1) {
+                count = 1;
+            }
             const price = e.target.closest("li").querySelector(".product_price")
-            
-        showSum.textContent = (sumOfProducts - (sum + price.textContent)).toFixed(2)
-    }
-})
-// const deleteAllBtn = document.querySelector(".delete_all-btn")
+    
+            quantity.textContent = count
+            sumOfProducts = +price.textContent * count
+    
+            if (showSum) {
+                showSum.textContent = sumOfProducts
+            }
+        }
+    })
+}
 
-deleteAllBtn.addEventListener("click", () => {
-    localStorage.removeItem("productsId")
-    list.innerHTML = ""
-    showSum.textContent = `$0`
-    sum = 0
-    productCount = 0
-    cartCount.textContent = (`${productCount}`)
+if (deleteAllBtn) {
+    deleteAllBtn.addEventListener("click", () => {
+        localStorage.removeItem("productsId")
+        
+        if (list) list.innerHTML = ""
+        if (showSum) showSum.textContent = `$0`
+        sum = 0
+        
+        updateBasketSpans();
+        
+        if (productContent) {
+            const params = {
+                img: imgEmpty,
+                greenCard: greenCard
+            }
+            productContent.innerHTML = EmptyBasket(params)
+        }
+    })
+}
+
+if (productContent) {
+    const productsId = getProductsFromStorage();
+    
     if (productsId.length === 0) {
-        productContent.innerHTML = EmptyBasket()
+        const params = {
+            img: imgEmpty,
+            greenCard: greenCard
+        }
+        productContent.innerHTML = EmptyBasket(params)
     }
     else {
         renderProducts()
     }
-})
-
-// const quantity = document.querySelector(".quantity")
-// const minus = document.querySelector(".minus")
-// const plus = document.querySelector(".plus")
-
-// plus.addEventListener("click", (e)=>{
-//     +quantity++
-// })
-// minus.addEventListener("click", (e)=>{
-//     quantity--
-//     if (+quantity < 0){
-//         alert("The quantity is less than 0")
-//     }
-// })
-
-
-if (productsId.length === 0) {
-    const params = {
-        img: imgEmpty,
-        greenCard: greenCard
-    }
-    productContent.innerHTML = EmptyBasket(params)
 }
-else {
 
-
-    // productContent.innerHTML = Basket()
-    renderProducts()
-
-}
+export { updateBasketSpans, initCartCount };
