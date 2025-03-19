@@ -71,6 +71,8 @@ const renderProducts = () => {
             title: product.name,
             price: product.price,
             count: 1,
+            category: product.category,
+            size:product.size
         }
 
         if (list) {
