@@ -3,8 +3,9 @@ html {
 }
 
 body {
-  background-color: #e8e8e2;
+  background-color: #E8E8E2;
 }
+
 .container {
   max-width: 375px;
   min-width: 320px;
@@ -47,9 +48,11 @@ ol {
   list-style-type: none;
   padding: 0;
 }
+
 a {
   text-decoration: none;
 }
+
 body {
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -76,6 +79,7 @@ p {
   opacity: 0;
   pointer-events: none;
 }
+
 button {
   padding: 0;
   border: none;

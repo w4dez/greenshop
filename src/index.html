@@ -4,23 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
     <link rel="stylesheet" href="./sass/index.scss" />
+
   </head>
   <body>
     <include src="./partials/sections/header.html"></include>
     <!-- <include src="./partials/sections/intro.html"></include> -->
     <include src="./partials/sections/filter.html"></include>
     <include src="./partials/sections/cards.html"></include>
+    <include src="./partials/sections/cardsModal.html"></include>
     <include src="./partials/sections/footer.html"></include>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <!-- <include src="./partials/sections/header.html"></include> -->
 
-    <script type="module" src="./index.js"></script>
+    <script src="https://kit.fontawesome.com/e6449d2955.js" crossorigin="anonymous"></script>
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/cards.js"></script>
+    <script type="module" src="./js/popularCard.js"></script>
+    <script type="module" src="./js/discountCard.js"></script>
+    <script type="module" src="./js/cardsModal.js"></script>
+    <script type="module" src="./js/addToLS.js"></script>
+
   </body>
 </html>

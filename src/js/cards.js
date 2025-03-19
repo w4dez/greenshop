@@ -31,7 +31,7 @@ export const renderCards = async posts => {
 
 // renderCards();
 
-const getCards = async () => {
+export const getCards = async () => {
   const param = new URLSearchParams({
     keyword: '',
     page: currentPage,
