@@ -1,0 +1,39 @@
+<div class="cardsModal__body" data-id="{{_id}}">
+
+    <div class="cardsModal__bodyBlock">
+            <div class="cardsModal__imgOverlay">
+        <img class="cardsModal__img" src="{{img}}" alt="{{name}}">
+    </div>
+
+    <div class="cardsModal__textWrapper">
+            <p class="cardsModal__title">{{name}}</p>
+
+        <p class="cardsModal__desk">
+            Category:<span class="cardsModal__desk--value">{{category}}   </span>    
+            Size:<span class="cardsModal__desk--value">{{size}}</span> <br>
+            Popularity:<span class="cardsModal__desk--value">{{popularity}}</span>
+        </p>
+
+        <div class="cardsModal__infoWrapper">
+            <p class="cardsModal__info">{{desc}}</p>
+
+        </div>  
+    </div>
+    </div>
+
+
+
+
+    <div class="cardsModal__priceWrapper">
+        <p class="cardsModal__price">${{price}}</p>
+
+        <button class="cardsModal__button addToCard" data-id="{{_id}}" >Add to 
+            <i style="color: #fff;" class="fa-solid fa-cart-shopping cardsModal__basket"></i>
+        </button>
+    </div>
+
+    <button class="cardsModal__closeModal closeModal" id="js-closeModal">
+        <i  class="fa-solid fa-xmark"></i>
+    </button>
+
+</div>
